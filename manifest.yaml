@@ -1,0 +1,40 @@
+basePath: /
+definitions:
+  BarometricPressure:
+    properties:
+      timestamp: {type: string, format: "YYYY-MM-DD 24HH:MM:SS.USSS"}
+      temperature: {type: number, format: float}
+      pressure: {type: number, format: float}
+    type: object
+host: 10.244.000.00:5002
+info:
+  contact: {email: tyler@21.co, name: Tyler Pate}
+  description: Get remote sensor data on demand from multiple endpoints.
+  title: sensor21
+  version: '1.0'
+  x-21-category: iot
+  x-21-github-project-url: https://github.com/21dotco/sensor21
+  x-21-implements: [231d2fa28a440a6bef4de445e5142657668fb91a]
+  x-21-keywords: [sensor, pressure, temperature]
+  x-21-quick-buy: "$ 21 buy sensor21/barometricpressure"
+  x-21-total-price: {max: 5, min: 5}
+  x-21-implements-meta: {
+        "x-sensor21-city": "{CITY}",
+        "x-sensor21-state": "{STATE}",
+        "x-sensor21-country": "{COUNTRY}"
+    }
+paths:
+  /:
+    get:
+      consumes: [application/x-www-form-urlencoded]
+      produces: [application/json]
+      responses:
+        '200':
+          description: A list of MPL3115A2 measurements and location information.
+          schema:
+            properties:
+              barometricpressure: {$ref: '#/definitions/BarometricPressure'}
+      summary: Returns barometric pressure in Pascals and temperature in degrees C.
+schemes: [http]
+swagger: '2.0'
+x-21-manifest-path: /manifest
