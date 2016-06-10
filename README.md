@@ -81,7 +81,7 @@ You can also use the verify endpoint on the sensor21 aggregator. Load your zerot
 ZT_IP=$(ifconfig | grep -A2 zt | grep inet | sed 's|[^0-9. ]||g' | sed 's|[^ \t]*||' | awk 'NR==1{print $1}')
 
 # verify your endpoint is part of the pool
-curl https://mkt.21.co/sensor21/verify?zt_ip=$ZT_IP
+curl https://mkt.21.co/21dotco/sensor21_aggregator/sensor21/verify?zt_ip=$ZT_IP
 ```
 
 ### Step 5: View transactions with 21 log
