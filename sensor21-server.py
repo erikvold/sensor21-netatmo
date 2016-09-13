@@ -85,6 +85,6 @@ if __name__ == "__main__":
                 raise ValueError("error starting sensor21-server.py daemon")
         else:
             print("Server running...")
-            app.run(host='0.0.0.0', port=5002)
+            app.run(host='::', port=5002)
 
     run()
