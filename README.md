@@ -24,7 +24,7 @@ curl https://21.co | sh
 21 join
 ```
 
-### Step 2: Clone the repository and run setup
+### Step 2: Clone the repository and setup
 Clone the sensor21 repository, and run the setup script. You will be asked for user input multiple times.
 
 ``` bash
@@ -43,7 +43,11 @@ sudo pip3 install -r requirements.txt
 source setup.sh
 ```
 
-### Step 3: Start your server and publish your endpoint
+### Step 3: Create config.json
+
+Rename `config-example.json` to `config.json` and provide the necessary information.
+
+### Step 4: Start your server and publish your endpoint
 
 Start the server with the following:
 
