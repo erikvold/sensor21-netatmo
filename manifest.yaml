@@ -8,12 +8,12 @@ definitions:
     type: object
 host: 10.244.000.00:5002
 info:
-  contact: {email: tyler@21.co, name: Tyler Pate}
+  contact: {email: erikvvold@gmail.com, name: Erik Vold}
   description: Get remote sensor data on demand from multiple endpoints.
   title: sensor21
   version: '1.0'
   x-21-category: iot
-  x-21-github-project-url: https://github.com/21dotco/sensor21
+  x-21-github-project-url: https://github.com/erikvold/sensor21-netatmo
   x-21-implements: [231d2fa28a440a6bef4de445e5142657668fb91a]
   x-21-keywords: [sensor, pressure, temperature]
   x-21-quick-buy: "$ 21 buy sensor21/barometricpressure"

@@ -1,0 +1,7 @@
+{
+  "username": "USER_USERNAME",
+  "password": "USER_PASSWORD",
+  "client_id":"API_CLIENT_ID",
+  "client_secret": "API_CLIENT_SECRET",
+  "device_id": "DEVICE_MAC_ADDRESS"
+}

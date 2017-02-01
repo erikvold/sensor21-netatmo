@@ -1,6 +1,5 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-import datetime
 import json
 import logging
 import yaml
@@ -12,7 +11,7 @@ from flask import Flask
 from two1.wallet.two1_wallet import Wallet
 from two1.bitserv.flask import Payment
 
-import sqldb as db
+import netatmo
 
 app = Flask(__name__)
 
@@ -24,9 +23,7 @@ payment = Payment(app, wallet)
 log = logging.getLogger('werkzeug')
 log.setLevel(logging.ERROR)
 
-# sqldb setup
-latest_measurement = db.Operate()
-
+latest_measurement  = netatmo.Netatmo
 
 @app.route('/manifest')
 def docs():
@@ -40,26 +37,16 @@ def docs():
 
 @app.route('/server_status')
 def server_status():
-    """
-    Check the latest DB entry. If time is greater than 5 minutes
-    since last update, server status is down. Returns number of
-    seconds since last sensor update. Else server status returns
-    up. Returns number of seconds since last sensor update. 
-    """
-    latest_measurement.read()
-    timestamp = latest_measurement.barometer_package[0]['timestamp']
-    time_str = datetime.datetime.strptime(timestamp, '%Y-%m-%d %H:%M:%S.%f')
-    time_diff = datetime.datetime.now() - time_str
+    diff = latest_measurement.lastupdate()
     response = 'Server is %s. Last measurement was made %f seconds ago.'
-    if time_diff.seconds > 300:
-        return response % ('down', time_diff.seconds)
-    return response % ('up', time_diff.seconds)
-
+    if diff > 700:
+        return response % ('down', diff)
+    return response % ('up', diff)
 
 @app.route('/')
 @payment.required(5)
 def measurement():
-    return latest_measurement.read()
+    return json.dumps(latest_measurement.data())
 
 if __name__ == "__main__":
     import click
@@ -85,6 +72,6 @@ if __name__ == "__main__":
                 raise ValueError("error starting sensor21-server.py daemon")
         else:
             print("Server running...")
-            app.run(host='::', port=5002)
+            app.run(host='::', port=6012)
 
     run()

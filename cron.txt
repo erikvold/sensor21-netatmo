@@ -1,1 +1,0 @@
-* * * * * /usr/bin/python3 {PWD}/cron.py >> {PWD}/cron_log.txt 2>&1
