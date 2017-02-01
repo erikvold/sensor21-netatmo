@@ -88,7 +88,7 @@ After your server has been online for ~30 minutes, you can start to see transact
 21 log
 ```
 
-## Trobuleshooting
+## Troubleshooting
 
 If you have further support requests, please join the public 21 slack channel #developers [here](http://slack.21.co/).
 
